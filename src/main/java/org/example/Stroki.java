@@ -4,12 +4,24 @@ public class Stroki {
     public String[] stringArray = {"a","aaa", "aaaaa", "aaaaaaaa"};
     public void addElem(String elem){
         String[] newArr = new String[stringArray.length + 1];
-
+        int j = 0;
         for (int i = 0; i < stringArray.length; i++) {
-            newArr[i] = stringArray[i];
+            if (elem.length() < stringArray[i].length()) {
+                newArr[i] = elem;
+                j = i;
+                break;
+            } else {
+                newArr[i] = stringArray[i];
+            }
         }
-        newArr[newArr.length - 1] = elem;
+        for (int i = j;i < stringArray.length; i++){
+            newArr[i+1] = stringArray[i];
+        }
         stringArray = newArr;
+        for (int i = 0; i < stringArray.length; i++) {
+           System.out.print(stringArray[i] + " ");
+        }
+
     }
     public String getMax(){
         return stringArray[stringArray.length-1];
@@ -23,5 +35,5 @@ public class Stroki {
         }
         return s / k;
     }
-
+    
 }
